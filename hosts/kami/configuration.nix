@@ -8,6 +8,7 @@
   imports =
     [
       ./hardware-configuration.nix
+       inputs.home-manager.nixosModules.default
     ];
 
   # Bootloader.
@@ -98,7 +99,6 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   neovim
-  cargo # For Neovim Lsps
   
   git
   gh
@@ -116,7 +116,7 @@
   mpv
   mpvpaper
 
-  emacs
+  #emacs
   # For LaTeX in my emacs config
   tectonic
   imagemagick
