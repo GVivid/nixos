@@ -99,19 +99,30 @@
   environment.systemPackages = with pkgs; [
   neovim
   cargo # For Neovim Lsps
-  emacs
+  
   git
   gh
   wget
+  ripgrep
+
   firefox
   brightnessctl # Lets me set my brightness
   xclip # Makes the clipboard work.
-  # Hyprland
+
   nautilus
   hyprland
+  waybar
+
+  mpv
   mpvpaper
+
+  emacs
+  # For LaTeX in my emacs config
+  tectonic
+  imagemagick
+  ghostscript
+
   rofi
-  vim
   kitty
   ];
   
