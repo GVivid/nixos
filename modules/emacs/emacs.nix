@@ -11,6 +11,4 @@
     # '';
   };
 
-  # Optional: Runs Emacs as a user-level systemd service
-  services.emacs.enable =false;
 }

@@ -70,6 +70,7 @@
 	};
   };
 
+  # Desktop Environment
   programs.hyprland.enable = true;
 
   # Allow unfree packages
@@ -98,12 +99,12 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  neovim
-  
   git
   gh
   wget
   ripgrep
+  zip
+  unzip
 
   firefox
   brightnessctl # Lets me set my brightness
@@ -115,14 +116,10 @@
 
   mpv
   mpvpaper
-
-  #emacs
-  # For LaTeX in my emacs config
-  tectonic
-  imagemagick
-  ghostscript
+  swaybg
 
   rofi
+  dmenu
   kitty
   ];
   
