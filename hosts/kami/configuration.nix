@@ -11,6 +11,50 @@
        inputs.home-manager.nixosModules.default
     ];
 
+  ## All nvidia here.
+
+  # https://wiki.nixos.org/w/index.php?title=NVIDIA&mobileaction=toggle_view_desktop
+  services.xserver.videoDrivers = [
+    "modesetting"  # example for Intel iGPU; use "amdgpu" here instead if your iGPU is AMD
+    "nvidia"
+  ];
+
+  hardware.nvidia.prime = {
+    offload = {
+        enable = true;
+        enableOffloadCmd = true;
+    };
+    intelBusId = "PCI:0:2:0";
+    nvidiaBusId = "PCI:1:0:0";
+  };
+
+  hardware.graphics.enable = true;
+  #services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.nvidia.open = true;
+  
+  # For wayland and nvidia
+  hardware.nvidia.modesetting.enable = true;
+  
+  # Disable nvidia
+  # https://discourse.nixos.org/t/fully-disabling-the-nvidia-dgpu-on-an-optimus-laptop/29686/6
+  # boot.extraModprobeConfig = ''
+  #     blacklist nouveau
+  #     options nouveau modeset=0
+  #   '';
+  #   
+  # services.udev.extraRules = ''
+  #   # Remove NVIDIA USB xHCI Host Controller devices, if present
+  #   ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x0c0330", ATTR{power/control}="auto", ATTR{remove}="1"
+  #   # Remove NVIDIA USB Type-C UCSI devices, if present
+  #   ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x0c8000", ATTR{power/control}="auto", ATTR{remove}="1"
+  #   # Remove NVIDIA Audio devices, if present
+  #   ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x040300", ATTR{power/control}="auto", ATTR{remove}="1"
+  #   # Remove NVIDIA VGA/3D controller devices
+  #   ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x03[0-9]*", ATTR{power/control}="auto", ATTR{remove}="1"
+  # '';
+  # boot.blacklistedKernelModules = [ "nouveau" "nvidia" "nvidia_drm" "nvidia_modeset" ];
+  ## Nvidia over
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -92,7 +136,10 @@
         CPU_BOOST_ON_BAT = 0;
         CPU_SCALING_GOVERNOR_ON_AC = "performance";
         CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-        STOP_CHARGE_THRESH_BAT0 = 95;
+
+	   #Optional helps save long term battery health
+       START_CHARGE_THRESH_BAT0 = 40; # 40 and below it starts to charge
+       STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
       };
     };
   };
@@ -110,6 +157,7 @@
   firefox
   brightnessctl # Lets me set my brightness
   xclip # Makes the clipboard work.
+  wl-clipboard # Makes clipboard work better on wayland.
 
   nautilus
   hyprland
