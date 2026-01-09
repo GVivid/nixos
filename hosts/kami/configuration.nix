@@ -54,7 +54,7 @@
    enable = true;
    pulse.enable = true;
   };
-
+  
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.kami = {
     isNormalUser = true;
@@ -72,7 +72,8 @@
 
   # Desktop Environment
   programs.hyprland.enable = true;
-
+  
+  
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -112,6 +113,14 @@
 
   nautilus
   hyprland
+  hyprcursor
+
+  # Enable rose-pine-hyprcursor. 
+  # Require specific line in flake inputs: https://github.com/ndom91/rose-pine-hyprcursor
+  # env = HYPRCURSOR_THEME,rose-pine-hyprcursor in your hyprland.conf
+  inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
+
+  # nwg-look
   waybar
 
   mpv
@@ -120,6 +129,7 @@
 
   rofi
   dmenu
+  gnumake
   kitty
   ];
   
