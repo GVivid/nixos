@@ -179,6 +179,9 @@
   dmenu
   gnumake
   kitty
+
+  #espanso
+  #espanso-wayland
   ];
   
   fonts.packages = with pkgs; [
