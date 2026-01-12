@@ -14,8 +14,12 @@
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "25.11"; # Please read the comment before changing.
+
   imports = [
-  ./default.nix 
+  ./modules/emacs/emacs.nix
+  ./modules/neovim/neovim.nix
+  ./modules/latex/latex.nix
+  ./modules/gnuplot/gnuplot.nix
   ];
   
   #services.espanso = {
@@ -104,7 +108,7 @@
   #  /etc/profiles/per-user/kami/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    EDITOR = "nvim";
+    EDITOR = "neovim";
   };
 
   # Let Home Manager install and manage itself.
