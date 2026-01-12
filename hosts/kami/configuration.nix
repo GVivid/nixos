@@ -103,7 +103,7 @@
   users.users.kami = {
     isNormalUser = true;
     description = "kami";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "input" ];
     packages = with pkgs; [];
   };
 
@@ -180,7 +180,6 @@
   gnumake
   kitty
 
-  #espanso
   #espanso-wayland
   ];
   
