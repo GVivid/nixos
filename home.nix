@@ -20,8 +20,9 @@
   ./modules/neovim/neovim.nix
   ./modules/latex/latex.nix
   ./modules/gnuplot/gnuplot.nix
+  ./modules/syncthing/syncthing.nix
   ];
-  
+  programs.waybar.enable = true; 
   #services.espanso = {
   #  enable = true;
   #  # Use the Wayland-compatible package
@@ -58,6 +59,8 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
+  	inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
+
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
