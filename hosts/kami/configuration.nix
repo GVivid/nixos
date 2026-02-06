@@ -1,4 +1,4 @@
-{ inputs,pkgs, ... }:
+{ config,inputs,unstable,pkgs, ... }:
 
 {
   imports = [
@@ -6,6 +6,7 @@
     ../../modules/global/default.nix
     ../../modules/hardware/nvidia.nix
     ../../modules/hardware/laptop.nix # (Your TLP/Power settings)
+    ../../modules/unstable/unstable.nix
     ../../modules/users.nix
   ];
 
@@ -15,9 +16,9 @@
   environment.systemPackages = with pkgs; [
     firefox
     kitty
-    hyprland
+    unstable.hyprland
 	# inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
-	hyprcursor
+	unstable.hyprcursor
 	rofi
 	dmenu
 	nautilus
