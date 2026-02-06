@@ -23,38 +23,6 @@
   ./modules/syncthing/syncthing.nix
   ];
   programs.waybar.enable = true; 
-  #services.espanso = {
-  #  enable = true;
-  #  # Use the Wayland-compatible package
-  #  package = pkgs.espanso-wayland;
-  #  
-  #  # Configure your matches here
-  #  configs = {
-  #    default = {
-  #      show_notifications = false;
-  #    };
-  #  };
-
-  #  matches = {
-  #    base = {
-  #      matches = [
-  #        {
-  #          trigger = ":hello";
-  #          replace = "Hello from Espanso on NixOS!";
-  #        }
-  #        {
-  #          trigger = ":date";
-  #          replace = "{{mydate}}";
-  #          vars = [{
-  #            name = "mydate";
-  #            type = "date";
-  #            params = { format = "%Y-%m-%d"; };
-  #          }];
-  #        }
-  #      ];
-  #    };
-  #  };
-  #};
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
