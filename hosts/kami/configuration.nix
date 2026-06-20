@@ -1,20 +1,17 @@
-{ config,inputs,unstable,pkgs, ... }:
+{ config, inputs, unstable, pkgs, modulesDir, ... }:
 
 {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/global/default.nix
-    ../../modules/hardware/nvidia.nix
-    ../../modules/hardware/laptop.nix # (Your TLP/Power settings)
-    ../../modules/unstable/unstable.nix
-    ../../modules/users.nix
+    (modulesDir + "/global/default.nix")
+    (modulesDir + "/system/default.nix")
   ];
 
   #networking.hostName = "nixos";
   
   # Specific apps just for this machine
   environment.systemPackages = with pkgs; [
-    firefox
+    # firefox
     kitty
     unstable.hyprland
 	# inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
@@ -25,5 +22,21 @@
 	swaybg
   ];
 
+  programs.pythonDev.enable = true;
+  programs.unstable.enable = true;
+  programs.opencode.enable = true;
   system.stateVersion = "25.11";
+  services.keyd = {
+  enable = true;
+  keyboards = {
+    default = {
+      ids = ["*"];
+      settings = {
+        main = {
+          capslock = "overload(control, esc)";
+        };
+      };
+    };
+  };
+};
 }

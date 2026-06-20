@@ -1,9 +1,17 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
-{
-  # This lets me plot things on a graph. Useful for emacs.
-  home.packages = [
-    pkgs.gnuplot
-  ];
+with lib;
 
+let
+  cfg = config.programs.gnuplotPkg;
+in {
+  options.programs.gnuplotPkg = {
+    enable = mkEnableOption "Gnuplot package";
+  };
+
+  config = mkIf cfg.enable {
+    home.packages = [
+      pkgs.gnuplot
+    ];
+  };
 }

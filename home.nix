@@ -1,4 +1,10 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  modulesDir,
+  ...
+}:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -16,18 +22,19 @@
   home.stateVersion = "25.11"; # Please read the comment before changing.
 
   imports = [
-  ./modules/emacs/emacs.nix
-  ./modules/neovim/neovim.nix
-  ./modules/latex/latex.nix
-  ./modules/gnuplot/gnuplot.nix
-  ./modules/syncthing/syncthing.nix
+    (modulesDir + "/home/default.nix")
   ];
-  programs.waybar.enable = true; 
-
+  programs.emacsPkg.enable = true;
+  programs.neovimPkg.enable = true;
+  programs.latexPkgs.enable = true;
+  programs.gnuplotPkg.enable = true;
+  programs.syncthingSvc.enable = true;
+  programs.firefoxCfg.enable = true;
+  programs.waybar.enable = true;
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
-  	inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
+    inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
 
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
@@ -50,7 +57,7 @@
   # plain files is through 'home.file'.
   home.file = {
 
-	# # Building this configuration will create a copy of 'dotfiles/screenrc' in
+    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
@@ -61,6 +68,7 @@
     #   org.gradle.daemon.idletimeout=3600000
     # '';
   };
+  xdg.enable = true;
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a

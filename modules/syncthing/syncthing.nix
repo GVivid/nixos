@@ -1,9 +1,17 @@
-{ pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
-{
-services.syncthing = {
-  enable = true;
-  # openDefaultPorts = true;
-  # Optional: GUI credentials (can be set in the browser instead)
-};
+with lib;
+
+let
+  cfg = config.programs.syncthingSvc;
+in {
+  options.programs.syncthingSvc = {
+    enable = mkEnableOption "Syncthing service";
+  };
+
+  config = mkIf cfg.enable {
+    services.syncthing = {
+      enable = true;
+    };
+  };
 }

@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, modulesDir, ... }:
 
 {
   users.users.kami = {
@@ -8,7 +8,7 @@
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = { inherit inputs modulesDir; };
     users = {
       "kami" = import ./../home.nix;
     };

@@ -1,11 +1,19 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
-{
-  # LaTeX dependencies for emacs and neovim.
-  home.packages = [
-    pkgs.tectonic
-    pkgs.imagemagick
-    pkgs.ghostscript
-  ];
+with lib;
 
+let
+  cfg = config.programs.latexPkgs;
+in {
+  options.programs.latexPkgs = {
+    enable = mkEnableOption "LaTeX packages (tectonic, imagemagick, ghostscript)";
+  };
+
+  config = mkIf cfg.enable {
+    home.packages = [
+      pkgs.tectonic
+      pkgs.imagemagick
+      pkgs.ghostscript
+    ];
+  };
 }

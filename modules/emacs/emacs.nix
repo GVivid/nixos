@@ -1,14 +1,18 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
-{
-  programs.emacs = {
-    enable = true;
-    package = pkgs.emacs; # Options: pkgs.emacs29, pkgs.emacs-pgtk, etc.
-    
-    # This allows you to manage your init file directly in Nix if you wish
-    # extraConfig = ''
-    #   (setq inhibit-startup-screen t)
-    # '';
+with lib;
+
+let
+  cfg = config.programs.emacsPkg;
+in {
+  options.programs.emacsPkg = {
+    enable = mkEnableOption "Emacs package configuration";
   };
 
+  config = mkIf cfg.enable {
+    programs.emacs = {
+      enable = true;
+      package = pkgs.emacs;
+    };
+  };
 }

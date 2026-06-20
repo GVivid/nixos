@@ -15,11 +15,17 @@
       url = "github:ndom91/rose-pine-hyprcursor";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+	
+	firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs = { self, nixpkgs, unstable, ... }@inputs: {
     nixosConfigurations.kami = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs; };
+      specialArgs = { inherit inputs; modulesDir = ./modules; };
       modules = [
         ./hosts/kami/configuration.nix
         inputs.home-manager.nixosModules.default 
