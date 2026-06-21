@@ -8,5 +8,7 @@
     (modulesDir + "/users.nix")
     (modulesDir + "/python-dev/python-dev.nix")
     (modulesDir + "/opencode/opencode.nix")
+    (modulesDir + "/dotnet/dotnet.nix")
+    (modulesDir + "/windows-vm/windows-vm.nix")
   ];
 }

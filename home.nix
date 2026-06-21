@@ -5,7 +5,6 @@
   modulesDir,
   ...
 }:
-
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -24,12 +23,14 @@
   imports = [
     (modulesDir + "/home/default.nix")
   ];
+
   programs.emacsPkg.enable = true;
   programs.neovimPkg.enable = true;
   programs.latexPkgs.enable = true;
   programs.gnuplotPkg.enable = true;
   programs.syncthingSvc.enable = true;
   programs.firefoxCfg.enable = true;
+  programs.vscodeCfg.enable = true;
   programs.waybar.enable = true;
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -87,7 +88,7 @@
   #  /etc/profiles/per-user/kami/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    EDITOR = "neovim";
+    EDITOR = "nvim";
   };
 
   # Let Home Manager install and manage itself.

@@ -8,5 +8,6 @@
     (modulesDir + "/gnuplot/gnuplot.nix")
     (modulesDir + "/syncthing/syncthing.nix")
     (modulesDir + "/firefox/firefox.nix")
+    (modulesDir + "/vscode/vscode.nix")
   ];
 }
