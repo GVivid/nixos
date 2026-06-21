@@ -28,7 +28,8 @@
     nautilus
     swaybg
   ];
-  environment.variables.EDITOR = "nvim";
+  programs.nano.enable = false;
+  environment.sessionVariables.EDITOR = "nvim";
 
   programs.pythonDev.enable = true;
   programs.dotnet.enable = true;

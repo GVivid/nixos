@@ -18,6 +18,7 @@ in
   config = mkIf cfg.enable {
     programs.neovim = {
       enable = true;
+      defaultEditor = true;
       package = pkgs.neovim-unwrapped;
       extraPackages = with pkgs; [
         nixpkgs-fmt
