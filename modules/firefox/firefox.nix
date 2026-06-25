@@ -12,6 +12,30 @@ in {
   config = mkIf cfg.enable {
     programs.firefox = {
       enable = true;
+
+      policies."3rdparty".extensions."addon@darkreader.org" = {
+        enabled = true;
+        theme = {
+          mode = 1;
+          brightness = 100;
+          contrast = 100;
+          grayscale = 0;
+          sepia = 0;
+          useFont = false;
+          fontFamily = "";
+          textStroke = 0;
+          engine = "dynamicTheme";
+          stylesheet = "";
+          darkSchemeBackgroundColor = "#1e1e2e";
+          darkSchemeTextColor = "#cdd6f4";
+          lightSchemeBackgroundColor = "#1e1e2e";
+          lightSchemeTextColor = "#cdd6f4";
+          scrollbarColor = "auto";
+          selectionColor = "#45475a";
+          styleSystemControls = true;
+        };
+      };
+
       profiles.kami = {
         search.engines = {
           "Nix Packages" = {

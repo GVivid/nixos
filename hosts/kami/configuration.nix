@@ -38,24 +38,23 @@
   programs.opencode.enable = true;
   programs.windowsVm.enable = true;
   system.stateVersion = "25.11";
-  services.keyd = {
+
+  services.kanata = {
     enable = true;
     keyboards = {
       default = {
-        ids = [ "*" ];
-        settings = {
-          main = {
-            # 'oneshot' ensures tap behavior, 'layer' handles the hold
-            capslock = "layer(control_layer)";
-          };
-          control_layer = {
-            # Tap once for escape
-            # Hold to activate control
-            capslock = "esc";
-            "any" = "layer(control_layer)";
-          };
-        };
+        # The entire Kanata layout configuration text goes directly into 'config'
+        config = ''
+          (defsrc caps)
+          (defalias
+          ;; Tapped: esc
+          ;; Held: fires the macro (taps esc) and holds lctl down simultaneously
+          capsec (tap-hold 1 5 esc (multi (macro esc) lctl))
+          )
+
+          (deflayer default @capsec)'';
       };
     };
   };
+
 }
