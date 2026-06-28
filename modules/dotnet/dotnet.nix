@@ -3,9 +3,9 @@
 with lib;
 
 let
-  cfg = config.programs.dotnet;
+  cfg = config.custom.dotnet;
 in {
-  options.programs.dotnet = {
+  options.custom.dotnet = {
     enable = mkEnableOption "the .NET 11 SDK and C# development tooling";
 
     package = mkOption {

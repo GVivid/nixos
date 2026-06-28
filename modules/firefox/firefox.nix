@@ -3,9 +3,9 @@
 with lib;
 
 let
-  cfg = config.programs.firefoxCfg;
+  cfg = config.custom.firefox;
 in {
-  options.programs.firefoxCfg = {
+  options.custom.firefox = {
     enable = mkEnableOption "Firefox profile configuration";
   };
 

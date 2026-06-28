@@ -3,9 +3,9 @@
 with lib;
 
 let
-  cfg = config.programs.emacsPkg;
+  cfg = config.custom.emacs;
 in {
-  options.programs.emacsPkg = {
+  options.custom.emacs = {
     enable = mkEnableOption "Emacs package configuration";
   };
 

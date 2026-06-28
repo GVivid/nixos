@@ -3,9 +3,9 @@
 with lib;
 
 let
-  cfg = config.programs.unstable;
+  cfg = config.custom.unstable;
 in {
-  options.programs.unstable = {
+  options.custom.unstable = {
     enable = mkEnableOption "Unstable nixpkgs channel";
   };
 

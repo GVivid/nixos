@@ -8,10 +8,10 @@
 with lib;
 
 let
-  cfg = config.programs.neovimPkg;
+  cfg = config.custom.neovim;
 in
 {
-  options.programs.neovimPkg = {
+  options.custom.neovim = {
     enable = mkEnableOption "Neovim package configuration";
   };
 

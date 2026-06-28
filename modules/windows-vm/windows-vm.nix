@@ -8,7 +8,7 @@
 with lib;
 
 let
-  cfg = config.programs.windowsVm;
+  cfg = config.custom.windowsVm;
   user = "kami";
   vmDir = cfg.vmDir;
   vmName = "windows-11";
@@ -16,7 +16,7 @@ let
   winIso = "${vmDir}/Win11.iso";
   virtioIso = "${vmDir}/virtio-win.iso";
 in {
-  options.programs.windowsVm = {
+  options.custom.windowsVm = {
     enable = mkEnableOption "a Windows 11 VM with libvirt/QEMU for Visual Studio development";
 
     vmDir = mkOption {

@@ -3,9 +3,9 @@
 with lib;
 
 let
-  cfg = config.programs.latexPkgs;
+  cfg = config.custom.latex;
 in {
-  options.programs.latexPkgs = {
+  options.custom.latex = {
     enable = mkEnableOption "LaTeX packages (tectonic, imagemagick, ghostscript)";
   };
 

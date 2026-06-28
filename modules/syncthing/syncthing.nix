@@ -3,9 +3,9 @@
 with lib;
 
 let
-  cfg = config.programs.syncthingSvc;
+  cfg = config.custom.syncthing;
 in {
-  options.programs.syncthingSvc = {
+  options.custom.syncthing = {
     enable = mkEnableOption "Syncthing service";
   };
 

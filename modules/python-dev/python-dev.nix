@@ -3,9 +3,9 @@
 with lib;
 
 let
-  cfg = config.programs.pythonDev;
+  cfg = config.custom.pythonDev;
 in {
-  options.programs.pythonDev = {
+  options.custom.pythonDev = {
     enable = mkEnableOption "the modern Python development stack (Python, uv, ty, and ruff)";
     
     package = mkOption {

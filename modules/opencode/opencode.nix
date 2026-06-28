@@ -3,9 +3,9 @@
 with lib;
 
 let
-  cfg = config.programs.opencode;
+  cfg = config.custom.opencode;
 in {
-  options.programs.opencode = {
+  options.custom.opencode = {
     enable = mkEnableOption "OpenCode package";
   };
 

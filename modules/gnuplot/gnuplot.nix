@@ -3,9 +3,9 @@
 with lib;
 
 let
-  cfg = config.programs.gnuplotPkg;
+  cfg = config.custom.gnuplot;
 in {
-  options.programs.gnuplotPkg = {
+  options.custom.gnuplot = {
     enable = mkEnableOption "Gnuplot package";
   };
 

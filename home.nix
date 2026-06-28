@@ -24,14 +24,15 @@
     (modulesDir + "/home/default.nix")
   ];
 
-  programs.emacsPkg.enable = true;
-  programs.neovimPkg.enable = true;
-  programs.latexPkgs.enable = true;
-  programs.gnuplotPkg.enable = true;
-  programs.syncthingSvc.enable = true;
-  programs.firefoxCfg.enable = true;
-  programs.vscodeCfg.enable = true;
+  custom.emacs.enable = true;
+  custom.neovim.enable = true;
+  custom.latex.enable = true;
+  custom.gnuplot.enable = true;
+  custom.syncthing.enable = true;
+  custom.firefox.enable = true;
+  custom.vscode.enable = true;
   programs.waybar.enable = true;
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [

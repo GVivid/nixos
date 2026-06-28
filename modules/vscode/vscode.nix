@@ -3,9 +3,9 @@
 with lib;
 
 let
-  cfg = config.programs.vscodeCfg;
+  cfg = config.custom.vscode;
 in {
-  options.programs.vscodeCfg = {
+  options.custom.vscode = {
     enable = mkEnableOption "Visual Studio Code with C# development extensions";
   };
 

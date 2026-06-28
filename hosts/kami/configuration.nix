@@ -31,12 +31,12 @@
   programs.nano.enable = false;
   environment.sessionVariables.EDITOR = "nvim";
 
-  programs.pythonDev.enable = true;
-  programs.dotnet.enable = true;
+  custom.pythonDev.enable = true;
+  custom.dotnet.enable = true;
 
-  programs.unstable.enable = true;
-  programs.opencode.enable = true;
-  programs.windowsVm.enable = true;
+  custom.unstable.enable = true;
+  custom.opencode.enable = true;
+  custom.windowsVm.enable = true;
   system.stateVersion = "25.11";
 
   services.kanata = {
