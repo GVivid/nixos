@@ -84,6 +84,17 @@ The `windows-vm-create` script uses `bus=virtio`. If you see SATA, the VM was cr
 ### Hugepages allocation fails
 Reduce `ram` or ensure enough contiguous memory is available at boot. Check with `cat /proc/meminfo | grep HugePages_*`.
 
+### Not enough virtual cores
+If you passed in 8 cores, but only 1 is being recognized, do windows-vm edit, and then modifiy cpu line with this.
+```xml
+  <cpu mode='host-passthrough' check='none' migratable='on'>
+    <topology sockets='1' cores='4' threads='2'/>
+  </cpu>
+```
+
+You can modify the topology until it makes sense for your system.
+Read more here: https://woshub.com/vcpu-and-core-number-virtual-machine/
+
 ## Architecture
 
 ```
